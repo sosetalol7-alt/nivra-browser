@@ -9,6 +9,7 @@ add_executable(Nivra
     src/main.cpp
     src/core/Application.cpp
     src/core/Window.cpp
+    src/graphics/Renderer.cpp
 )
 
 target_include_directories(Nivra PRIVATE

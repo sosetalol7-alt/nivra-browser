@@ -1,4 +1,5 @@
 #include "Window.h"
+#include "../graphics/Renderer.h"
 
 Window::Window()
     : m_window(nullptr)
@@ -49,17 +50,32 @@ HWND Window::GetHandle() const
 
 LRESULT CALLBACK Window::WindowProc(
     HWND hwnd,
-    UINT msg,
+    UINT message,
     WPARAM wParam,
     LPARAM lParam)
 {
-    switch (msg)
+    switch (message)
     {
+    case WM_PAINT:
+    {
+        PAINTSTRUCT ps;
+
+        HDC dc = BeginPaint(hwnd, &ps);
+
+        Renderer renderer(dc);
+
+        renderer.Clear({30, 30, 30});
+
+        EndPaint(hwnd, &ps);
+
+        return 0;
+    }
+
     case WM_DESTROY:
         PostQuitMessage(0);
         return 0;
 
     default:
-        return DefWindowProcW(hwnd, msg, wParam, lParam);
+        return DefWindowProcW(hwnd, message, wParam, lParam);
     }
 }
