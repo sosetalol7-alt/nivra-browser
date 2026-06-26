@@ -1,2 +1,2 @@
 # nivra-browser
-An open-source Chromium-based web browser focused on performance, efficiency, and transparency.
+Nivra is an open-source Chromium-based browser that prioritizes privacy, security, transparency, and efficient resource usage.
