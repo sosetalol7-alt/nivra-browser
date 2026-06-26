@@ -1,7 +1,7 @@
-#include <iostream>
+#include "core/Application.h"
 
 int main()
 {
-    std::cout << "Welcome to Nivra!" << std::endl;
-    return 0;
+    Application app;
+    return app.Run();
 }
