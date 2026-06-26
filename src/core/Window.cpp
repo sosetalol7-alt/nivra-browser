@@ -1,5 +1,7 @@
 #include "Window.h"
+
 #include "../graphics/Renderer.h"
+#include "../ui/UIManager.h"
 
 Window::Window()
     : m_window(nullptr)
@@ -54,6 +56,8 @@ LRESULT CALLBACK Window::WindowProc(
     WPARAM wParam,
     LPARAM lParam)
 {
+    static UIManager ui;
+
     switch (message)
     {
     case WM_PAINT:
@@ -65,6 +69,8 @@ LRESULT CALLBACK Window::WindowProc(
         Renderer renderer(dc);
 
         renderer.Clear({30, 30, 30});
+
+        ui.Draw(renderer);
 
         EndPaint(hwnd, &ps);
 
